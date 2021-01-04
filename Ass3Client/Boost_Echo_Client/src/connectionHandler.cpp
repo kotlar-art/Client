@@ -1,5 +1,5 @@
 #include <connectionHandler.h>
- 
+#include <iostream>
 using boost::asio::ip::tcp;
 
 using std::cin;
@@ -7,7 +7,7 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::string;
- 
+using namespace std;
 ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
     
 ConnectionHandler::~ConnectionHandler() {
@@ -75,22 +75,28 @@ bool ConnectionHandler::sendLine(std::string& line) {
 bool ConnectionHandler::sendLine(std::string& line, short opcode) {
     return sendFrameAscii(line, opcode);
 }
- 
+
 
 bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     char ch;
+    int position = 0;
     // Stop when we encounter the null character.
     // Notice that the null character is not appended to the frame string.
     try {
-	do{
-		if(!getBytes(&ch, 1))
-		{
-			return false;
-		}
-		if(ch!='\0')  
+	    do{
+		    if(!getBytes(&ch, 1)) {
+			    return false;
+		    }
+		    if (position==2){
+
+		    }
+		    if(ch!='\0')
 			frame.append(1, ch);
-	}while (delimiter != ch);
-    } catch (std::exception& e) {
+		    position++;
+	    }
+	    while (delimiter != ch);
+    }
+    catch (std::exception& e) {
 	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
 	return false;
     }
@@ -98,22 +104,45 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
 }
  
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
-
 	bool result=sendBytes(frame.c_str(),frame.length());
 	if(!result) return false;
 	return sendBytes(&delimiter,1);
 }
 
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, short opcode) {
-    char *cstr = new char[frame.length() + 3];
-    shortToBytes(opcode, cstr);
-    strcpy(cstr + 2, frame.c_str());
-    bool result=sendBytes(cstr,frame.length()+2);
+    int newLength;
+    char *cstr;
+    if (opcode==5||opcode==6||opcode==7||opcode==9||opcode==10){
+        newLength=4;
+        cstr = new char[newLength];
+        shortToBytes(opcode, cstr);
+        stringstream number(frame);
+        short x = 0;
+        number >> x;
+        shortToBytes(x, cstr+2);
+    }
+    if (opcode==1||opcode==2||opcode==3||opcode==8){
+        newLength = frame.length()+3;
+        cstr = new char[newLength];
+        shortToBytes(opcode, cstr);
+        strcpy(cstr + 2, frame.c_str());
+        cstr[newLength-1] = '\0';
+        for (unsigned int i = 0; i<newLength; i++){
+            if (cstr[i] == ' ')
+                cstr[i] = '\0';
+        }
+    }
+    if (opcode==4||opcode==11){
+        newLength = 2;
+        cstr = new char[newLength];
+        shortToBytes(opcode,cstr);
+    }
+    bool result = sendBytes(cstr,newLength);
     delete[] cstr;
     if(!result) return false;
     return true;
 }
- 
+
 // Close down the connection properly.
 void ConnectionHandler::close() {
     try{

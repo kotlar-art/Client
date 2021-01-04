@@ -20,27 +20,67 @@ int main (int argc, char *argv[]) {
         return 1;
     }
 
-    //From here we will see the rest of the ehco client implementation:
     while (1) {
         std::string s;
         std::cin>>s;
         std::string command = "";
         int i = 0;
-        while (s[i]!='\0'){
+        while (s[i]!=' '){
             command = command + s[i];
             i++;
         }
         bool sent;
+        std::string sub = "";
         if (command.compare("ADMINREG")){
-            std::string sub = s.substr(i+1);
+            sub = s.substr(i+1);
             sent = connectionHandler.sendLine(sub, 1);
         }
-        if (!connectionHandler.sendLine(line)) {
+        if (command.compare("STUDENTREG")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 2);
+        }
+        if (command.compare("LOGIN")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 3);
+        }
+        if (command.compare("LOGOUT")){
+            sub = "";
+            sent = connectionHandler.sendLine(sub, 4);
+        }
+        if (command.compare("COURSEREG")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 5);
+        }
+        if (command.compare("KDAMCHECK")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 6);
+        }
+        if (command.compare("COURSESTAT")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 7);
+        }
+        if (command.compare("STUDENTSTAT")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 8);
+        }
+        if (command.compare("ISREGISTERED")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 9);
+        }
+        if (command.compare("UNREGISTER")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 10);
+        }
+        if (command.compare("MYCOURSES")){
+            sub = s.substr(i+1);
+            sent = connectionHandler.sendLine(sub, 11);
+        }
+        if (!sent) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-        // connectionHandler.sendLine(line) appends '\n' to the message. Therefor we send len+1 bytes.
-        std::cout << "Sent " << len+1 << " bytes to server" << std::endl;
+        // connectionHandler.sendLine(line) appends the opcode in bytes to the string so it sends +2 bytes
+        std::cout << "Sent " << sub.length()+2 << " bytes to server" << std::endl;
 
 
         // We can use one of three options to read data from the server:
@@ -54,7 +94,6 @@ int main (int argc, char *argv[]) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-
         len=answer.length();
         // A C string must end with a 0 char delimiter.  When we filled the answer buffer from the socket
         // we filled up to the \n char - we must make sure now that a 0 char is also present. So we truncate last character.

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Client.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Client.cpp.o"
   "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/EncoderDecoder.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/EncoderDecoder.cpp.o"
+  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Task.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.o"
   "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/connectionHandler.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/connectionHandler.cpp.o"
   "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/echoClient.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/echoClient.cpp.o"
   "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/main.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/main.cpp.o"

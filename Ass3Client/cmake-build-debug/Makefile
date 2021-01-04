@@ -197,6 +197,33 @@ Boost_Echo_Client/src/EncoderDecoder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ass3Client.dir/build.make CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/EncoderDecoder.cpp.s
 .PHONY : Boost_Echo_Client/src/EncoderDecoder.cpp.s
 
+Boost_Echo_Client/src/Task.o: Boost_Echo_Client/src/Task.cpp.o
+
+.PHONY : Boost_Echo_Client/src/Task.o
+
+# target to build an object file
+Boost_Echo_Client/src/Task.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ass3Client.dir/build.make CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.o
+.PHONY : Boost_Echo_Client/src/Task.cpp.o
+
+Boost_Echo_Client/src/Task.i: Boost_Echo_Client/src/Task.cpp.i
+
+.PHONY : Boost_Echo_Client/src/Task.i
+
+# target to preprocess a source file
+Boost_Echo_Client/src/Task.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ass3Client.dir/build.make CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.i
+.PHONY : Boost_Echo_Client/src/Task.cpp.i
+
+Boost_Echo_Client/src/Task.s: Boost_Echo_Client/src/Task.cpp.s
+
+.PHONY : Boost_Echo_Client/src/Task.s
+
+# target to generate assembly for a file
+Boost_Echo_Client/src/Task.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ass3Client.dir/build.make CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.s
+.PHONY : Boost_Echo_Client/src/Task.cpp.s
+
 Boost_Echo_Client/src/connectionHandler.o: Boost_Echo_Client/src/connectionHandler.cpp.o
 
 .PHONY : Boost_Echo_Client/src/connectionHandler.o
@@ -293,6 +320,9 @@ help:
 	@echo "... Boost_Echo_Client/src/EncoderDecoder.o"
 	@echo "... Boost_Echo_Client/src/EncoderDecoder.i"
 	@echo "... Boost_Echo_Client/src/EncoderDecoder.s"
+	@echo "... Boost_Echo_Client/src/Task.o"
+	@echo "... Boost_Echo_Client/src/Task.i"
+	@echo "... Boost_Echo_Client/src/Task.s"
 	@echo "... Boost_Echo_Client/src/connectionHandler.o"
 	@echo "... Boost_Echo_Client/src/connectionHandler.i"
 	@echo "... Boost_Echo_Client/src/connectionHandler.s"

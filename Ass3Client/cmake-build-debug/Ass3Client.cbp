@@ -86,7 +86,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/include/Client.h">
+			<Option target="Ass3Client"/>
+		</Unit>
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/include/connectionHandler.h">
+			<Option target="Ass3Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/include/main.h">
 			<Option target="Ass3Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/makefile">
@@ -95,10 +101,13 @@
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Client.cpp">
 			<Option target="Ass3Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Client.h">
+		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/EncoderDecoder.cpp">
 			<Option target="Ass3Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/EncoderDecoder.cpp">
+		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Task.cpp">
+			<Option target="Ass3Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Task.h">
 			<Option target="Ass3Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/connectionHandler.cpp">
@@ -108,9 +117,6 @@
 			<Option target="Ass3Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/main.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/main.h">
 			<Option target="Ass3Client"/>
 		</Unit>
 		<Unit filename="/home/spl211/CLionProjects/Ass3Client/CMakeLists.txt">
