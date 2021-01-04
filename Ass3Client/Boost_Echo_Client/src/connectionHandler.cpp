@@ -1,5 +1,6 @@
 #include <connectionHandler.h>
 #include <iostream>
+#include <sstream>
 using boost::asio::ip::tcp;
 
 using std::cin;

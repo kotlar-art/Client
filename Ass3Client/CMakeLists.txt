@@ -9,4 +9,4 @@ add_executable(Ass3Client
         Boost_Echo_Client/include/connectionHandler.h
         Boost_Echo_Client/src/connectionHandler.cpp
         Boost_Echo_Client/src/echoClient.cpp
-        Boost_Echo_Client/makefile Boost_Echo_Client/src/Client.cpp Boost_Echo_Client/include/Client.h Boost_Echo_Client/src/EncoderDecoder.cpp Boost_Echo_Client/src/main.cpp Boost_Echo_Client/include/main.h Boost_Echo_Client/src/Task.cpp Boost_Echo_Client/include/Task.h)
+        Boost_Echo_Client/makefile Boost_Echo_Client/src/Client.cpp Boost_Echo_Client/include/Client.h Boost_Echo_Client/include/main.h Boost_Echo_Client/src/Task.cpp Boost_Echo_Client/include/Task.h Boost_Echo_Client/src/Writer.cpp Boost_Echo_Client/include/Writer.h Boost_Echo_Client/src/Reader.cpp Boost_Echo_Client/src/Reader.h)

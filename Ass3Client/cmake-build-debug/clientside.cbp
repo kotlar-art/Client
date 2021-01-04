@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="Ass3Client"/>
+		<Option title="clientside"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="msvc8"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -12,62 +12,6 @@
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Ass3Client">
-				<Option output="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/Ass3Client.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 Ass3Client"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Ass3Client/fast">
-				<Option output="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/Ass3Client.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 Ass3Client/fast"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
 					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
@@ -83,48 +27,69 @@
 					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="clientside">
+				<Option output="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/clientside.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clientside"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clientside/fast">
+				<Option output="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/clientside.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clientside/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\lenovo\CLionProjects\clientside\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include/Client.h">
-			<Option target="Ass3Client"/>
+		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/main.cpp">
+			<Option target="clientside"/>
 		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include/Task.h">
-			<Option target="Ass3Client"/>
+		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/src/connectionHandler.cpp">
+			<Option target="clientside"/>
 		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include/Writer.h">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include/connectionHandler.h">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/include/main.h">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/makefile">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Client.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Client.h">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Reader.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Reader.h">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Task.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Writer.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/connectionHandler.cpp">
-			<Option target="Ass3Client"/>
-		</Unit>
-		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/echoClient.cpp">
-			<Option target="Ass3Client"/>
+		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/src/echoClient.cpp">
+			<Option target="clientside"/>
 		</Unit>
 		<Unit filename="C:/Users/lenovo/CLionProjects/clientside/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

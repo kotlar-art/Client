@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Client.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Client.cpp.o"
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/EncoderDecoder.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/EncoderDecoder.cpp.o"
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/Task.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.o"
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/connectionHandler.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/connectionHandler.cpp.o"
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/echoClient.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/echoClient.cpp.o"
-  "/home/spl211/CLionProjects/Ass3Client/Boost_Echo_Client/src/main.cpp" "/home/spl211/CLionProjects/Ass3Client/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/main.cpp.o"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Client.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Client.cpp.obj"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Reader.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Reader.cpp.obj"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Task.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Task.cpp.obj"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/Writer.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/Writer.cpp.obj"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/connectionHandler.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/connectionHandler.cpp.obj"
+  "C:/Users/lenovo/CLionProjects/clientside/Boost_Echo_Client/src/echoClient.cpp" "C:/Users/lenovo/CLionProjects/clientside/cmake-build-debug/CMakeFiles/Ass3Client.dir/Boost_Echo_Client/src/echoClient.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
