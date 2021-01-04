@@ -53,6 +53,8 @@ public:
     bool sendFrameAscii(const std::string &frame, short opcode);
 
     void shortToBytes(short num, char* bytesArr);
+
+    short bytesToShort(char* bytesArr);
 }; //class ConnectionHandler
  
 #endif
