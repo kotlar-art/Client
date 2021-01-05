@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <boost/asio.hpp>
+#include "../src/Sstring.cpp"
 
 using boost::asio::ip::tcp;
 using namespace std;
@@ -33,14 +34,14 @@ public:
  
     // Get Ascii data from the server until the delimiter character
     // Returns false in case connection closed before null can be read.
-    bool getFrameAscii(std::string& frame);
-
     // Close down the connection properly.
     void close();
 
     void shortToBytes(short num, char* bytesArr);
 
     short bytesToShort(char *bytesArr);
+
+    bool getFrameAscii(Sstring frame);
 }; //class ConnectionHandler
  
 #endif

@@ -1,6 +1,8 @@
 #include <connectionHandler.h>
 #include <iostream>
 #include <sstream>
+#include <Sstring.h>
+
 using boost::asio::ip::tcp;
 
 using std::cin;
@@ -54,8 +56,12 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
 	boost::system::error_code error;
     try {
         while (!error && bytesToWrite > tmp ) {
-
+            cout<<"bytes are "<<endl;
+            for(int i = 0;i<bytesToWrite;i++){
+                cout<<to_string(bytes[i])<<endl;
+            }
 			tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
+
         }
 		if(error)
 			throw boost::system::system_error(error);
@@ -66,7 +72,7 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     return true;
 }
 
-bool ConnectionHandler::getFrameAscii(std::string& frame) {
+bool ConnectionHandler::getFrameAscii(Sstring frame) {
 
     int position = 0;
     int dynamicLength = 4;
@@ -74,18 +80,27 @@ bool ConnectionHandler::getFrameAscii(std::string& frame) {
     // Stop when we encounter the null character.
     // Notice that the null character is not appended to the frame string.
     try {
+        int counter = 0;
 	    do{
             if (position==4){
                 short AckOrError = bytesToShort(ch);
                 short subject = bytesToShort(ch+2);
+                cout <<"opcode is: " + to_string(AckOrError) + ", subject is: " + to_string(subject) << endl;
                 if (AckOrError==13){
-                    frame = "ERROR " + std::to_string(subject);
+                    std::string outputError("ERROR " + std::to_string(subject));
+                    frame.setContent(outputError);
                     return true;
                 }
                 if (AckOrError==12) {
-                    if (subject==6||subject==7||subject==8||subject==9||subject==11) frame = "ACK " + std::to_string(subject) + " ";
+                    cout << "we know it's ack message" << endl;
+
+                    if (subject==6||subject==7||subject==8||subject==9||subject==11) {
+                        std::string Ack("ACK " + std::to_string(subject) + " ");
+                        frame.setContent(Ack);
+                    }
                     else {
-                        frame = "ACK " + std::to_string(subject);
+                        std::string outputAck = "ACK " + std::to_string(subject);
+                        frame.setContent(outputAck);
                         return true;
                     }
                 }
@@ -102,16 +117,22 @@ bool ConnectionHandler::getFrameAscii(std::string& frame) {
 		    if(!getBytes(ch+position, 1)) {
 			    return false;
 		    }
-		    if (position>3) frame.append(1, ch[position]);
+		    frame.append(ch[position]);
+		    if(ch[position] == '\0'){
+		        counter++;
+		    }
+            cout << "Char at " + to_string(position) + " is " + to_string(ch[position]) << endl;
+		    if (position>3){
+
+		    }
 		    position++;
 	    }
-	    while (ch[position]!='\0');
+	    while (counter < 3);
     }
     catch (std::exception& e) {
 	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
 	return false;
     }
-    delete[] ch;
     return true;
 }
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, short opcode) {
@@ -127,14 +148,18 @@ bool ConnectionHandler::sendFrameAscii(const std::string& frame, short opcode) {
         shortToBytes(x, cstr+2);
     }
     if (opcode==1||opcode==2||opcode==3||opcode==8){
+        cout<<"reached sendfascii and opcode is " + std::to_string(opcode) + '\n' + "string is " + frame + '\n' + "and string length is " +
+                                                                std::to_string(frame.length())<<endl;
         newLength = frame.length()+3;
         cstr = new char[newLength];
         shortToBytes(opcode, cstr);
         strcpy(cstr + 2, frame.c_str());
         cstr[newLength-1] = '\0';
         for (int i = 0; i<newLength; i++){
+            cout << "character at " + std::to_string(i) + "is H" + std::to_string(cstr[i]) + "H"<<endl;
             if (cstr[i] == ' ')
                 cstr[i] = '\0';
+            cout << "after change character is H" + std::to_string(cstr[i]) + "H"<<endl;
         }
     }
     if (opcode==4||opcode==11){
