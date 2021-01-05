@@ -3,10 +3,10 @@ LDFLAGS:=-lboost_system -lboost_thread -pthread
 
 
 all:bin/BGRSclient
-bin/BGRSclient:bin/Client.o bin/connectionHandler.o bin/Reader.o bin/Sstring.o
+bin/BGRSclient:bin/Client.o bin/connectionHandler.o bin/Reader.o
 	@echo 'Building target: Client'
 	@echo 'Invoking: C++ Linker'
-	g++ -Wall -Weffc++ -o bin/BGRSclient bin/Client.o bin/connectionHandler.o bin/Reader.o bin/Sstring.o $(LDFLAGS)
+	g++ -Wall -Weffc++ -o bin/BGRSclient bin/Client.o bin/connectionHandler.o bin/Reader.o $(LDFLAGS)
 	@echo 'Finished building target: Client'
 	@echo ' '
 
@@ -19,9 +19,6 @@ bin/connectionHandler.o: src/connectionHandler.cpp
 
 bin/Reader.o: src/Reader.cpp
 	g++ $(CFLAGS) -o bin/Reader.o src/Reader.cpp
-
-bin/Sstring.o: src/Sstring.cpp
-	g++ $(CFLAGS) -o bin/Sstring.o src/Sstring.cpp
 
 clean:
 	rm -f bin/*

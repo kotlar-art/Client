@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include <boost/asio.hpp>
-#include "../src/Sstring.cpp"
 
 using boost::asio::ip::tcp;
 using namespace std;
@@ -39,9 +38,9 @@ public:
 
     void shortToBytes(short num, char* bytesArr);
 
-    short bytesToShort(char *bytesArr);
+    short bytesToShort(char *bytesArr, int i);
 
-    bool getFrameAscii(Sstring frame);
+    bool getFrameAscii(string &frame);
 }; //class ConnectionHandler
  
 #endif

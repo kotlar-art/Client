@@ -2,20 +2,20 @@
 // Created by lenovo on 1/4/2021.
 //
 
-#include <Sstring.h>
+
 #include "Reader.h"
 
 Reader::Reader(ConnectionHandler *handler, std::condition_variable& c, std::mutex& mut): connectionHandler(handler), toTerminate(false), _mut(mut), cv(c){}
 
 bool Reader::read() {
     while (true) {
-        Sstring answer("a");
+        string answer;
         if (!connectionHandler->getFrameAscii(answer)) {
             std::cout << "Disconnected. Exiting... read \n" << std::endl;
             break;
         }
-        std::cout << answer.getContent();
-        if (answer.getContent() == "ACK 4") {
+        std::cout << "funckinggggggggggg " + answer<<endl;
+        if (answer == "ACK 4") {
             toTerminate = true;
             cv.notify_all();
             break;
@@ -25,7 +25,7 @@ bool Reader::read() {
 }
 
 bool Reader::write() {
-    while (1) {
+    while (true) {
         const short bufsize = 1024;
         char buf[bufsize];
         cout<<"please type a command"<<endl;

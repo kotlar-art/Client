@@ -1,8 +1,6 @@
 #include <connectionHandler.h>
 #include <iostream>
 #include <sstream>
-#include <Sstring.h>
-
 using boost::asio::ip::tcp;
 
 using std::cin;
@@ -19,14 +17,14 @@ ConnectionHandler::~ConnectionHandler() {
 }
 
 bool ConnectionHandler::connect() {
-    std::cout << "Starting connect to " 
-        << host_ << ":" << port_ << std::endl;
+    std::cout << "Starting connect to "
+              << host_ << ":" << port_ << std::endl;
     try {
-		tcp::endpoint endpoint(boost::asio::ip::address::from_string(host_), port_); // the server endpoint
-		boost::system::error_code error;
-		socket_.connect(endpoint, error);
-		if (error)
-			throw boost::system::system_error(error);
+        tcp::endpoint endpoint(boost::asio::ip::address::from_string(host_), port_); // the server endpoint
+        boost::system::error_code error;
+        socket_.connect(endpoint, error);
+        if (error)
+            throw boost::system::system_error(error);
     }
     catch (std::exception& e) {
         std::cerr << "Connection failed (Error: " << e.what() << ')' << std::endl;
@@ -34,16 +32,17 @@ bool ConnectionHandler::connect() {
     }
     return true;
 }
- 
+
 bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     size_t tmp = 0;
-	boost::system::error_code error;
+    boost::system::error_code error;
     try {
         while (!error && bytesToRead > tmp ) {
-			tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);			
+
+            tmp += socket_.read_some(boost::asio::buffer(bytes+tmp, bytesToRead-tmp), error);
         }
-		if(error)
-			throw boost::system::system_error(error);
+        if(error)
+            throw boost::system::system_error(error);
     } catch (std::exception& e) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
         return false;
@@ -53,18 +52,18 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
 
 bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     int tmp = 0;
-	boost::system::error_code error;
+    boost::system::error_code error;
     try {
         while (!error && bytesToWrite > tmp ) {
             cout<<"bytes are "<<endl;
             for(int i = 0;i<bytesToWrite;i++){
                 cout<<to_string(bytes[i])<<endl;
             }
-			tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
+            tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
 
         }
-		if(error)
-			throw boost::system::system_error(error);
+        if(error)
+            throw boost::system::system_error(error);
     } catch (std::exception& e) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
         return false;
@@ -72,66 +71,50 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     return true;
 }
 
-bool ConnectionHandler::getFrameAscii(Sstring frame) {
-
-    int position = 0;
-    int dynamicLength = 4;
-    char *ch = new char[dynamicLength];
+bool ConnectionHandler::getFrameAscii(std::string &frame) {
+    char ch[4];
     // Stop when we encounter the null character.
     // Notice that the null character is not appended to the frame string.
     try {
-        int counter = 0;
-	    do{
-            if (position==4){
-                short AckOrError = bytesToShort(ch);
-                short subject = bytesToShort(ch+2);
-                cout <<"opcode is: " + to_string(AckOrError) + ", subject is: " + to_string(subject) << endl;
-                if (AckOrError==13){
-                    std::string outputError("ERROR " + std::to_string(subject));
-                    frame.setContent(outputError);
-                    return true;
-                }
-                if (AckOrError==12) {
-                    cout << "we know it's ack message" << endl;
-
-                    if (subject==6||subject==7||subject==8||subject==9||subject==11) {
-                        std::string Ack("ACK " + std::to_string(subject) + " ");
-                        frame.setContent(Ack);
-                    }
-                    else {
-                        std::string outputAck = "ACK " + std::to_string(subject);
-                        frame.setContent(outputAck);
-                        return true;
-                    }
-                }
+        if(!getBytes(ch, 4)){
+            return false;
+        }
+        short AckOrError = bytesToShort(ch, 0);
+        short subject = bytesToShort(ch, 2);
+        if (AckOrError==13){
+            string s ="ERROR " + std::to_string(subject);
+            for (int i = 0; i < s.length(); ++i) {
+                frame.append(1, s[i]);
             }
-            if (position==dynamicLength){
-                dynamicLength = 2*dynamicLength;
-                char *tmp = new char[dynamicLength];
-                for (int i = 0; i<(dynamicLength/2); i++){
-                    tmp[i] = ch[i];
-                }
-                delete[] ch;
-                ch = tmp;
+            return true;
+        }
+        if (AckOrError==12) {
+            cout << "we know it's ack message" << endl;
+            string s = "ACK " + std::to_string(subject);
+            for (int i = 0; i < s.length(); ++i) {
+                frame.append(1, s[i]);
             }
-		    if(!getBytes(ch+position, 1)) {
-			    return false;
-		    }
-		    frame.append(ch[position]);
-		    if(ch[position] == '\0'){
-		        counter++;
-		    }
-            cout << "Char at " + to_string(position) + " is " + to_string(ch[position]) << endl;
-		    if (position>3){
-
-		    }
-		    position++;
-	    }
-	    while (counter < 3);
+            if (subject == 6 || subject == 7 || subject == 8 || subject == 9 || subject == 11) {
+                frame.append(1, ' ');
+            }
+            else {
+                return true;
+            }
+        }
+        char sh;
+        do{
+            if(!getBytes(&sh, 1)){
+                return false;
+            }
+            if(sh != '\0') {
+                frame.append(1, sh);
+            }
+        }
+        while (sh != '\0');
     }
     catch (std::exception& e) {
-	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
-	return false;
+        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
+        return false;
     }
     return true;
 }
@@ -149,7 +132,7 @@ bool ConnectionHandler::sendFrameAscii(const std::string& frame, short opcode) {
     }
     if (opcode==1||opcode==2||opcode==3||opcode==8){
         cout<<"reached sendfascii and opcode is " + std::to_string(opcode) + '\n' + "string is " + frame + '\n' + "and string length is " +
-                                                                std::to_string(frame.length())<<endl;
+              std::to_string(frame.length())<<endl;
         newLength = frame.length()+3;
         cstr = new char[newLength];
         shortToBytes(opcode, cstr);
@@ -186,8 +169,8 @@ void ConnectionHandler::shortToBytes(short num, char* bytesArr) {
     bytesArr[1] = (num & 0xFF);
 }
 
-short ConnectionHandler::bytesToShort(char *bytesArr) {
-    short result = (short)((bytesArr[0] & 0xff) << 8);
-    result += (short)(bytesArr[1] & 0xff);
+short ConnectionHandler::bytesToShort(char *bytesArr, int i) {
+    short result = (short)((bytesArr[i] & 0xff) << 8);
+    result += (short)(bytesArr[i+1] & 0xff);
     return result;
 }
