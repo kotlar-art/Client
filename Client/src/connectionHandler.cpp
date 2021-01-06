@@ -55,9 +55,7 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     boost::system::error_code error;
     try {
         while (!error && bytesToWrite > tmp ) {
-            cout<<"bytes are "<<endl;
             for(int i = 0;i<bytesToWrite;i++){
-                cout<<to_string(bytes[i])<<endl;
             }
             tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
 
@@ -89,14 +87,11 @@ bool ConnectionHandler::getFrameAscii(std::string &frame) {
             return true;
         }
         if (AckOrError==12) {
-            cout << "we know it's ack message" << endl;
             string s = "ACK " + std::to_string(subject);
             for (int i = 0; i < s.length(); ++i) {
                 frame.append(1, s[i]);
             }
-            if (subject == 6 || subject == 7 || subject == 8 || subject == 9 || subject == 11) {
-                frame.append(1, ' ');
-            }
+            if(subject==6||subject==7||subject==8||subject==9||subject==11){}
             else {
                 return true;
             }
@@ -120,37 +115,35 @@ bool ConnectionHandler::getFrameAscii(std::string &frame) {
 }
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, short opcode) {
     int newLength;
+    bool result;
     char *cstr;
     if (opcode==5||opcode==6||opcode==7||opcode==9||opcode==10){
         newLength=4;
-        cstr = new char[newLength];
+        char *cstr = new char[newLength];
         shortToBytes(opcode, cstr);
         stringstream number(frame);
         short x = 0;
         number >> x;
         shortToBytes(x, cstr+2);
+
     }
     if (opcode==1||opcode==2||opcode==3||opcode==8){
-        cout<<"reached sendfascii and opcode is " + std::to_string(opcode) + '\n' + "string is " + frame + '\n' + "and string length is " +
-              std::to_string(frame.length())<<endl;
         newLength = frame.length()+3;
-        cstr = new char[newLength];
+        char *cstr = new char[newLength];
         shortToBytes(opcode, cstr);
         strcpy(cstr + 2, frame.c_str());
         cstr[newLength-1] = '\0';
         for (int i = 0; i<newLength; i++){
-            cout << "character at " + std::to_string(i) + "is H" + std::to_string(cstr[i]) + "H"<<endl;
             if (cstr[i] == ' ')
                 cstr[i] = '\0';
-            cout << "after change character is H" + std::to_string(cstr[i]) + "H"<<endl;
         }
     }
     if (opcode==4||opcode==11){
         newLength = 2;
-        cstr = new char[newLength];
+        char *cstr = new char[newLength];
         shortToBytes(opcode,cstr);
     }
-    bool result = sendBytes(cstr,newLength);
+    result = sendBytes(cstr, newLength);
     delete[] cstr;
     if(!result) return false;
     return true;

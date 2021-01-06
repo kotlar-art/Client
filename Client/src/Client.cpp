@@ -7,7 +7,6 @@
 #include <thread>
 #include "Reader.h"
 #include <mutex>
-#include <thread>
 
 int main (int argc, char *argv[]) {
     if (argc < 3) {
