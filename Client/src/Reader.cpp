@@ -28,16 +28,21 @@ bool Reader::write() {
     while (true) {
         const short bufsize = 1024;
         char buf[bufsize];
-        cout<<"please type a command"<<endl;
+        cout << "please type a command" << endl;
         std::cin.getline(buf, bufsize);
         std::string s(buf);
-        cout<< "typed string " + s<<endl;
+        cout << "typed string " + s << endl;
         std::string command;
         int i = 0;
-        while (s[i] != ' ') {
-            command.push_back(s[i]);
-            i++;
+        bool enter = true;
+        if (s == "MYCOURSES" || s == "LOGOUT") {
+            enter = false;
+            command = s;
         }
+            while (s[i] != ' ' & enter) {
+                command.push_back(s[i]);
+                i++;
+            }
         cout<<"command is " << command <<endl;
         bool sent;
         std::string sub = "";
